@@ -1,6 +1,8 @@
 package com.leodemetrio.hibernatejpa.testes;
 
+import com.leodemetrio.hibernatejpa.dao.ProdutoDao;
 import com.leodemetrio.hibernatejpa.modelo.Produto;
+import com.leodemetrio.hibernatejpa.util.JPAUtil;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,11 +16,13 @@ public class CadastroProduto {
         celular.setDescricao("Celular Top");
         celular.setPreco(new BigDecimal("900.00"));
 
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("hibernate-jpa");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        EntityManager entityManager = JPAUtil.getEntityManager();
+
+        ProdutoDao produtoDao = new ProdutoDao(entityManager);
 
         entityManager.getTransaction().begin();
-        entityManager.persist(celular);
+        produtoDao.cadastrar(celular);
         entityManager.getTransaction().commit();
         entityManager.close();
     }
