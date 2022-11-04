@@ -28,6 +28,8 @@ public class CadastroProduto {
         entityManager.getTransaction().begin();
         categoriaDao.cadastrar(cel);
         produtoDao.cadastrar(celular);
+        cel.setNome("celulares");
+        categoriaDao.atualizar(cel);
         entityManager.getTransaction().commit();
         entityManager.close();
     }
