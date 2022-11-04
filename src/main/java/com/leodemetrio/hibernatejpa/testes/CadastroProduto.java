@@ -1,6 +1,7 @@
 package com.leodemetrio.hibernatejpa.testes;
 
 import com.leodemetrio.hibernatejpa.dao.ProdutoDao;
+import com.leodemetrio.hibernatejpa.modelo.Categoria;
 import com.leodemetrio.hibernatejpa.modelo.Produto;
 import com.leodemetrio.hibernatejpa.util.JPAUtil;
 
@@ -11,7 +12,7 @@ import java.math.BigDecimal;
 
 public class CadastroProduto {
     public static void main(String[] args) {
-        Produto celular = new Produto();
+        Produto celular = new Produto("Sansung","Celular Top",new BigDecimal("900.00"), Categoria.CELULARES);
         celular.setNome("Sansung");
         celular.setDescricao("Celular Top");
         celular.setPreco(new BigDecimal("900.00"));
